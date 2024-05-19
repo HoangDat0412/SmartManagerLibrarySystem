@@ -28,6 +28,9 @@ namespace SmartManagerLibrarySystem.Models
         [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a positive number.")]
         public int Quantity { get; set; }
 
+        [Required(ErrorMessage = "The image field is required.")]
+        public string Image { get; set; }
+
         [StringLength(500, ErrorMessage = "The description cannot exceed 500 characters.")]
         public string Description { get; set; }
 

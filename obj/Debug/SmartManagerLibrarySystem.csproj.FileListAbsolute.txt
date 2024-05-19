@@ -110,3 +110,5 @@ D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.Migrations.I
 D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.csproj.GenerateResource.cache
 D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.Migrations.AddBookModel.resources
 D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.Migrations.AddLoansToApplicationUser.resources
+D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.Migrations.AddImageToBooks.resources
+D:\C#\SmartManagerLibrarySystem\obj\Debug\SmartManagerLibrarySystem.Migrations.AddNewAdtribututeForTableBook.resources

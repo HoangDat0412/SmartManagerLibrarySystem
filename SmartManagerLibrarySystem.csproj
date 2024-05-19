@@ -187,6 +187,14 @@
     <Compile Include="Migrations\202405190506423_AddLoansToApplicationUser.designer.cs">
       <DependentUpon>202405190506423_AddLoansToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405190535304_AddImageToBooks.cs" />
+    <Compile Include="Migrations\202405190535304_AddImageToBooks.designer.cs">
+      <DependentUpon>202405190535304_AddImageToBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202405190537224_AddNewAdtribututeForTableBook.cs" />
+    <Compile Include="Migrations\202405190537224_AddNewAdtribututeForTableBook.designer.cs">
+      <DependentUpon>202405190537224_AddNewAdtribututeForTableBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Books.cs" />
@@ -315,6 +323,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202405190506423_AddLoansToApplicationUser.resx">
       <DependentUpon>202405190506423_AddLoansToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405190535304_AddImageToBooks.resx">
+      <DependentUpon>202405190535304_AddImageToBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405190537224_AddNewAdtribututeForTableBook.resx">
+      <DependentUpon>202405190537224_AddNewAdtribututeForTableBook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
