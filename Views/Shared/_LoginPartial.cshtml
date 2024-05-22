@@ -9,14 +9,14 @@
         <li>
             @Html.ActionLink(User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
         </li>
-        <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><a class="nav-link btn btn-danger mt-2 mb-3" href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
     </ul>
     }
 }
 else
 {
-    <ul class="navbar-nav navbar-right">
+    <ul class="navbar-nav navbar-right d-flex flex-row gap-3 align-items-end mb-4" >
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="btn btn-success" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class="btn btn-default" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class="btn btn-primary" })</li>
     </ul>
 }

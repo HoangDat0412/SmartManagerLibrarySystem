@@ -2,10 +2,6 @@
 @model IEnumerable<SmartManagerLibrarySystem.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Users";
-}
-
-@{
     ViewBag.Title = "ManageUsers";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -13,7 +9,7 @@
 <div class="container">
     <h2>Manager User</h2>
 
-    <form class="form-inline my-2 my-lg-0" method="get" action="@Url.Action("ManageUsers", "Admin")">
+    <form class="form-inline my-2 my-lg-0 d-flex" method="get" action="@Url.Action("ManageUsers", "Admin")">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchString" value="@Request.QueryString["searchString"]">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>

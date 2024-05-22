@@ -7,49 +7,55 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        .content {
+            overflow-y: scroll;
+        }
+    </style>
+
 </head>
 <body>
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto px-2 bg-dark">
+            <div class="col-auto px-2 bg-dark vh-100">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5">Smart Manager Library System</span>
+                        <span class="fs-5">Smart Manager Library</span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="/" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            <a href="/" class="nav-link text-light align-middle px-0">
+                                <i class="fa fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/Home/ManagerBook" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Daskboard</span>
+                            <a href="/Home/ManagerBook" class="nav-link text-light px-0 align-middle">
+                                <i class="fa fa-book"></i> <span class="ms-1 d-none d-sm-inline">Library</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/Home/BorrowedBooks" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Daskboard</span>
+                            <a href="/Home/BorrowedBooks" class="nav-link text-light px-0 align-middle">
+                                <i class="fa fa-angle-double-right"></i>  <span class="ms-1 d-none d-sm-inline">Borrowed Books</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/Home/BorrowHistory" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Daskboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-
-                                @Html.Partial("_LoginPartial")
+                            <a href="/Home/BorrowHistory" class="nav-link text-light px-0 align-middle">
+                                <i class="fa fa-history"></i> <span class="ms-1 d-none d-sm-inline">Borrow History</span>
                             </a>
                         </li>
 
-                    </ul>
+                    </ul> 
+                    <a href="#" class="nav-link px-0 align-middle mt-auto">
+
+                        @Html.Partial("_LoginPartial")
+                    </a>
                 </div>
             </div>
 
-            <div class="col py-3">
+            <div class="col py-3 content vh-100">
                 @RenderBody()
             </div>
         </div>

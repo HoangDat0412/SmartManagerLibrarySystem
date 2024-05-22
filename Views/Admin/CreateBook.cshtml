@@ -2,10 +2,11 @@
 
 @{
     ViewBag.Title = "Create Book";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="container" >
-    <h2>Create</h2>
+    <h2>Create New Book</h2>
 
     @using (Html.BeginForm(null, null, FormMethod.Post, new {  }))
     {
@@ -43,10 +44,15 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group w-full">
             @Html.LabelFor(model => model.Description, new { @class = "control-label " })
-            <div class="">
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", rows = 5 } })
+            <div class="w-full">
+                @Html.TextAreaFor(model => model.Description, new Dictionary<string, object>
+{
+    { "class", "form-control w-full" },
+    { "rows", "5" },
+    { "style", "width: 100%;" }
+})
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -75,6 +81,6 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "ManagerBook", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Back to List", "ManagerBook", null, new { @class = "btn btn-default mt-3" })
     </div>
 </div>

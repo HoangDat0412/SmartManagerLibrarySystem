@@ -1,41 +1,62 @@
 ﻿@model SmartManagerLibrarySystem.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
+<main aria-labelledby="title" class="vh-100">
+     
+            <div class="row class="vh-100"" >
+                <div class="col-sm-6 text-black h-100">
 
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <h4>Create a new account.</h4>
-        <hr />
-        @Html.ValidationSummary("", new { @class = "text-danger" })
-        <div class="row">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    <div class="px-5 ms-xl-4">
+                        <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                        <span class="h1 fw-bold mb-0">Logo</span>
+                    </div>
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+<form style="width: 23rem;">
+    @Html.AntiForgeryToken()
+    <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
+
+    <div data-mdb-input-init class="form-outline mb-3">
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <label class="form-label" for="form2Example18">Email address</label>
+    </div>
+
+    <div data-mdb-input-init class="form-outline mb-3">
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <label class="form-label" for="form2Example28">Password</label>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-3">
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <label class="form-label" for="form2Example28">Comonfirm Password</label>
+    </div>
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+<div class="pt-1 mb-3">
+    <div class="">
+        <input type="submit" value="Register" class="btn btn-primary" />
+    </div>
+</div>
+
+    <p>You already have an account? <a href="/Account/Login" class="link-info">Login here</a></p>
+
+</form>
+            }
+                            
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6 px-0 d-none d-sm-block h-100">
+                    <img src="https://i.pinimg.com/564x/47/8b/36/478b36f03c5d2f91e238d71ff3681c15.jpg"
+                         alt="Login image" width="100%" height="70%" style="object-fit: cover; object-position: left;">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="row">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="offset-md-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-outline-dark" />
-            </div>
-        </div>
-    }
 </main>
 
 @section Scripts {
