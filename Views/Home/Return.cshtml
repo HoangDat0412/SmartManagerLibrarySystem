@@ -1,0 +1,33 @@
+﻿
+@model SmartManagerLibrarySystem.Models.Loans
+
+@{
+    ViewBag.Title = "Return Book";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout
+}
+
+<div class="container mt-4">
+    <h2>Return Book</h2>
+    <div>
+        <p><strong>Loan Date:</strong> @Html.DisplayFor(model => model.LoanDate)</p>
+        <p><strong>Return Date:</strong> @Html.DisplayFor(model => model.ReturnDate)</p>
+        <p><strong>Book:</strong> @Html.DisplayFor(model => model.Book.Name)</p>
+    </div>
+    @using (Html.BeginForm("Return", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+
+        <input type="submit" value="Confirm Return" class="btn btn-primary" />
+        @Html.ActionLink("Cancel", "BorrowedBooks", "Books", null, new { @class = "btn btn-secondary ml-2" })
+    }
+
+</div>
+
+
+
+
+
+
+
+

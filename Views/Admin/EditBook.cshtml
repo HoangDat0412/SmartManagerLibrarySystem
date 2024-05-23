@@ -46,10 +46,15 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-            <div class="">
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", rows = 5 } })
+        <div class="form-group w-full">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label " })
+            <div class="w-full">
+                @Html.TextAreaFor(model => model.Description, new Dictionary<string, object>
+{
+    { "class", "form-control w-full" },
+    { "rows", "5" },
+    { "style", "width: 100%;" }
+})
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>

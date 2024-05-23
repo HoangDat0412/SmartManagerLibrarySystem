@@ -1,33 +1,55 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Manager Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+@model IEnumerable<SmartManagerLibrarySystem.Models.Books>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
-</main>
+<div class="container">
+    <h2>Library</h2>
+
+    <form method="get" action="@Url.Action("index")" class="form-inline mb-3 d-flex align-items-center row">
+        <div class="form-group col-11">
+            <input type="text" name="searchString" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Search by name or author" />
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0 col-1" type="submit">Search</button>
+    </form>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Name", "index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Author", "index", new { sortOrder = ViewBag.AuthorSortParm, searchString = ViewBag.CurrentFilter })
+                </th>
+                <th>@Html.DisplayNameFor(model => model.Genre)</th>
+                <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                <th>@Html.DisplayNameFor(model => model.Publisher)</th>
+                <th>@Html.DisplayNameFor(model => model.Image)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Genre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Publisher)</td>
+                    <td>
+                        <img src="@item.Image" alt="Book Image" width="50" height="50" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "BookDetails", new { id = item.BookId }, new { @class = "btn btn-primary" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

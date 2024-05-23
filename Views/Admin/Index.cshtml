@@ -4,5 +4,52 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="card-icon">
+                    <i class="fas fa-book fa-3x"></i>
+                </div>
+                <h5 class="card-title">Available Books</h5>
+                <p class="card-text">@ViewBag.AvailableBooksCount</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="card-icon">
+                    <i class="fas fa-book-reader fa-3x"></i>
+                </div>
+                <h5 class="card-title">Borrowed Books</h5>
+                <p class="card-text">@ViewBag.BorrowedBooksCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="card-icon">
+                    <i class="fas fa-book fa-3x"></i>
+                </div>
+                <h5 class="card-title">Loans</h5>
+                <p class="card-text">@ViewBag.NumberOfLoans</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white mb-4">
+            <div class="card-body">
+                <div class="card-icon">
+                    <i class="fas fa-user fa-3x"></i>
+                </div>
+                <h5 class="card-title">Users</h5>
+                <p class="card-text">@ViewBag.NumberOfUsers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 

@@ -1,0 +1,35 @@
+﻿
+
+
+@model SmartManagerLibrarySystem.Models.BorrowViewModel
+
+@{
+    ViewBag.Title = "Borrow Book";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout
+}
+
+<div class="container">
+    <h2>Borrow @Model.BookName</h2>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="mt-4">
+        <p><strong>Book:</strong> @Model.BookName</p>
+        <p><strong>Loan Date:</strong> @Model.LoanDate.ToShortDateString()</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.BookId)
+        @Html.HiddenFor(model => model.LoanDate)
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.ReturnDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+
+            @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
+        </div>
+
+        <input type="submit" value="Confirm Borrow" class="btn btn-primary" />
+        @Html.ActionLink("Cancel", "BookDetails", new { id = Model.BookId }, new { @class = "btn btn-secondary ml-2" })
+    }
+</div>

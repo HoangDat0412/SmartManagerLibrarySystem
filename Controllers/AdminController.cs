@@ -16,6 +16,23 @@ namespace SmartManagerLibrarySystem.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            // Get available books count
+            var availableBooksCount = db.Books.Count(b => b.Quantity > 0);
+
+            // Get borrowed books count
+            var borrowedBooksCount = db.Loans.Count(l => !l.Returned);
+
+            // Get number of users
+            var numberOfUsers = db.Users.Count();
+
+            // Get number of loans
+            var numberOfLoans = db.Loans.Count();
+
+            @ViewBag.NumberOfUsers = numberOfUsers;
+            @ViewBag.NumberOfLoans = numberOfLoans;
+            @ViewBag.BorrowedBooksCount = borrowedBooksCount;
+            @ViewBag.AvailableBooksCount = availableBooksCount;
+
             return View();
         }
         public ActionResult ManageUsers(string searchString)
@@ -201,6 +218,65 @@ namespace SmartManagerLibrarySystem.Controllers
             db.Books.Remove(book);
             db.SaveChanges();
             return RedirectToAction("ManagerBook");
+        }
+
+        public ActionResult ManagerLoans(string searchString, string sortOrder)
+        {
+            var loans = db.Loans.Include(l => l.Book).Include(l => l.User).AsQueryable();
+
+            // Search functionality
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                loans = loans.Where(l => l.User.UserName.Contains(searchString) || l.Book.Name.Contains(searchString));
+            }
+
+            // Sort functionality
+            ViewBag.LoanDateSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.ReturnDateSortParm = sortOrder == "ReturnDate" ? "returnDate_desc" : "ReturnDate";
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    loans = loans.OrderByDescending(l => l.LoanDate);
+                    break;
+                case "ReturnDate":
+                    loans = loans.OrderBy(l => l.ReturnDate);
+                    break;
+                case "returnDate_desc":
+                    loans = loans.OrderByDescending(l => l.ReturnDate);
+                    break;
+                default:
+                    loans = loans.OrderBy(l => l.LoanDate);
+                    break;
+            }
+
+            return View(loans.ToList());
+        }
+
+        // Delete a loan
+        public ActionResult DeleteLoans(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Loans loan = db.Loans.Find(id);
+            if (loan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(loan);
+        }
+
+        [HttpPost, ActionName("DeleteLoans")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Loans loan = db.Loans.Find(id);
+            db.Loans.Remove(loan);
+            db.SaveChanges();
+            return RedirectToAction("ManagerLoans");
         }
 
     }

@@ -4,5 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>BorrowedBooks</h2>
+@model IEnumerable<SmartManagerLibrarySystem.Models.LoanDetailViewModel>
+
+@{
+    ViewBag.Title = "Borrowed Books";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<div class="container">
+    <h2 class="mb-4">Your Borrowed Books</h2>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Loan Id</th>
+                <th>Loan Date</th>
+                <th>Return Date</th>
+                <th>Book</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.LoanDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.ReturnDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Book.Name)</td>
+                    <td>
+                        @Html.ActionLink("Return Book Now", "Return", new { id = item.Loan.Id }, new { @class = "btn btn-success btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

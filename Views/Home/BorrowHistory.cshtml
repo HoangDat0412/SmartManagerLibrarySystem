@@ -1,8 +1,31 @@
-﻿
+﻿@model IEnumerable<SmartManagerLibrarySystem.Models.LoanDetailViewModel>
+
 @{
-    ViewBag.Title = "BorrowHistory";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Borrowing History";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout
 }
 
-<h2>BorrowHistory</h2>
-
+<div class="container mt-4">
+    <h2>Your Borrowing History </h2>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Loan Date</th>
+                <th>Return Date</th>
+                <th>Book</th>
+                <th>Returned</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.LoanDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.ReturnDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Book.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Loan.Returned)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

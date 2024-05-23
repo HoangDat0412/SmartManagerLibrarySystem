@@ -23,6 +23,7 @@ namespace SmartManagerLibrarySystem.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Books> Books { get; set; }
+        public DbSet<Loans> Loans { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

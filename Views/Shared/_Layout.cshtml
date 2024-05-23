@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,17 +22,16 @@
         <div class="row flex-nowrap">
             <div class="col-auto px-2 bg-dark vh-100">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="navbar-brand d-flex justify-content-center w-100">
+                        <img width="100px" src="~/Content/Flower_Book_Store__1_-removebg-preview.png" alt="Library Logo" />
+                    </a>
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5">Smart Manager Library</span>
+                        <span class="fs-4">Smart Manager Library</span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link text-light align-middle px-0">
-                                <i class="fa fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                            </a>
-                        </li>
+
                         <li>
-                            <a href="/Home/ManagerBook" class="nav-link text-light px-0 align-middle">
+                            <a href="/" class="nav-link text-light px-0 align-middle">
                                 <i class="fa fa-book"></i> <span class="ms-1 d-none d-sm-inline">Library</span>
                             </a>
                         </li>
@@ -47,7 +46,7 @@
                             </a>
                         </li>
 
-                    </ul> 
+                    </ul>
                     <a href="#" class="nav-link px-0 align-middle mt-auto">
 
                         @Html.Partial("_LoginPartial")

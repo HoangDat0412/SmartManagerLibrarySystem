@@ -198,7 +198,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\BorrowViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoanDetailViewModel.cs" />
     <Compile Include="Models\Loans.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,7 +275,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\ManagerBook.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Home\BookDetails.cshtml" />
     <Content Include="Views\Home\BorrowedBooks.cshtml" />
@@ -287,6 +288,10 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\DeleteBook.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Admin\ManagerLoans.cshtml" />
+    <Content Include="Views\Admin\DeleteLoans.cshtml" />
+    <Content Include="Views\Home\Borrow.cshtml" />
+    <Content Include="Views\Home\Return.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
